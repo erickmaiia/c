@@ -11,7 +11,7 @@ struct Register
 
 struct Register *registers = NULL;
 int num_registers = 0;
-int max_registros = 0;
+int max_registers = 0;
 
 int main(void)
 {
@@ -100,10 +100,10 @@ void createRegister()
 
     new_register.id = num_registers;
 
-    if (num_registers >= max_registros)
+    if (num_registers >= max_registers)
     {
-        max_registros = max_registros == 0 ? 1 : max_registros * 2;
-        registers = (struct Register *)realloc(registers, max_registros * sizeof(struct Register));
+        max_registers = max_registers == 0 ? 1 : max_registers * 2;
+        registers = (struct Register *)realloc(registers, max_registers * sizeof(struct Register));
     }
 
     registers[num_registers] = new_register;
@@ -125,11 +125,11 @@ void readRegister()
         return;
     }
 
-    struct Register registro = registers[id];
+    struct Register person = registers[id];
 
-    printf("\nID: %d\n", registro.id);
-    printf("Name: %s\n", registro.name);
-    printf("Age: %d\n", registro.age);
+    printf("\nID: %d\n", person.id);
+    printf("Name: %s\n", person.name);
+    printf("Age: %d\n", person.age);
 }
 
 void updateRegister()
@@ -145,13 +145,13 @@ void updateRegister()
         return;
     }
 
-    struct Register *registro = &registers[id];
+    struct Register *person = &registers[id];
 
     printf("Enter the new name: ");
-    scanf("%s", registro->name);
+    scanf("%s", person->name);
 
     printf("Enter the new age: ");
-    scanf("%d", &registro->age);
+    scanf("%d", &person->age);
 
     printf("\nRegistration successfully updated!\n");
 }
@@ -192,11 +192,11 @@ void showRegisters()
     
     for (int i = 0; i < num_registers; i++)
     {
-        struct Register registro = registers[i];
+        struct Register person = registers[i];
 
-        printf("ID: %d\n", registro.id);
-        printf("Name: %s\n", registro.name);
-        printf("Age: %d\n\n", registro.age);
+        printf("ID: %d\n", person.id);
+        printf("Name: %s\n", person.name);
+        printf("Age: %d\n\n", person.age);
     }
 }
 
