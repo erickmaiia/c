@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    int recursiveFunc(int x);
     int num;
 
     printf("Write a number: ");

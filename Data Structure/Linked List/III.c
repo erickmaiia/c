@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct knot
+typedef struct node
 {
     int value;
-    struct knot *next;
-} Knot;
+    struct node *next;
+} NODE;
 
 int size = 0;
-Knot *start = NULL;
+NODE *start = NULL;
 
-void append(int value, int index)
+void insert(int value, int index)
 {
     if (index >= 0 && index <= size)
     {
-        Knot *new = malloc(sizeof(Knot));
+        NODE *new = malloc(sizeof(NODE));
         new->value = value;
         new->next = NULL;
 
@@ -31,7 +31,7 @@ void append(int value, int index)
 
         else
         {
-            Knot *hook = start;
+            NODE *hook = start;
             for (int i = 0; i < index - 1; i++)
             {
                 hook = hook->next;
@@ -45,7 +45,7 @@ void append(int value, int index)
 
 void printList()
 {
-    Knot *hook = start;
+    NODE *hook = start;
     while (hook != NULL)
     {
         printf("%d ", hook->value);
@@ -54,7 +54,7 @@ void printList()
     printf("\n");
 }
 
-void reverseRecursive(Knot *n)
+void reverseRecursive(NODE *n)
 {
     if (n == NULL)
     {
@@ -66,14 +66,10 @@ void reverseRecursive(Knot *n)
 
 int main(void)
 {
-    void append(int value, int index);
-    void printList();
-    void reverseRecursive(Knot * n);
-
-    append(1, 0);
-    append(2, 1);
-    append(3, 2);
-    append(4, 0);
+    insert(1, 0);
+    insert(2, 1);
+    insert(3, 2);
+    insert(4, 0);
     printList();
     reverseRecursive(start);
     return 0;

@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct knot
+typedef struct node
 {
     int value;
-    struct knot *next;
-} Knot;
+    struct node *next;
+} NODE;
 
 int size = 0;
-Knot *start = NULL;
+NODE *start = NULL;
 
-void append(int value, int index)
+void insert(int value, int index)
 {
     if (index >= 0 && index <= size)
 
     {
-        Knot *new = malloc(sizeof(Knot));
+        NODE *new = malloc(sizeof(NODE));
         new->value = value;
         new->next = NULL;
 
@@ -32,7 +32,7 @@ void append(int value, int index)
 
         else
         {
-            Knot *hook = start;
+            NODE *hook = start;
             for (int i = 0; i < index - 1; i++)
             {
                 hook = hook->next;
@@ -46,7 +46,7 @@ void append(int value, int index)
 
 void printList()
 {
-    Knot *hook = start;
+    NODE *hook = start;
     while (hook != NULL)
     {
         printf("%d ", hook->value);
@@ -57,14 +57,11 @@ void printList()
 
 int main()
 {
-    void append(int value, int index);
-    void printList();
-
-    append(3, 0);
-    append(14, 1);
-    append(15, 0);
-    append(9, 2);
-    append(26, 3);
+    insert(3, 0);
+    insert(14, 1);
+    insert(15, 0);
+    insert(9, 2);
+    insert(26, 3);
 
     printList();
 

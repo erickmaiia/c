@@ -15,8 +15,6 @@ int max_registers = 0;
 
 int main(void)
 {
-    void callFunc(int arg);
-    void showMenu();
     int option;
 
     while (option != 7)

@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    float digitSum(float x, float y);
     float a, b, sum;
     printf("Write two numbers: ");
     scanf("%f", &a);
@@ -14,8 +13,6 @@ int main(void)
 
 float digitSum(float x, float y)
 {
-
-    float absoluteValue(float num);
 
     if (x < 0)
     {

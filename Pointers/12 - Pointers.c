@@ -13,8 +13,6 @@ void copyString(char *copy, char *paste)
 
 int main(void)
 {
-    void copyString(char *copy, char *paste);
-
     char string1[] = "Hello world!!!";
     char string2[20];
 

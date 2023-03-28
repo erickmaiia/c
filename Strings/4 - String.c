@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    int stringLen(char x[]);
     char sentence[20];
 
     printf("Write a string: ");

@@ -3,7 +3,6 @@
 int main(void)
 {
 
-    void concatString(char x[], int lenX, char y[], int lenY, char z[]);
     char sentence1[] = {'h', 'e', 'l', 'l', 'o', ' '};
     char sentence2[] = {'w', 'o', 'r', 'l', 'd'};
     char newSentence[11] = {};

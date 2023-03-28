@@ -4,7 +4,6 @@ int main(void)
 {
     int vector[10] = {9, 1, 0, 2, 5, 4, 3, 7, 6, 8};
     int i;
-    void ascendingOrder(int vector[], int n);
 
     ascendingOrder(vector, 10);
 

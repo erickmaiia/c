@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct knot
+typedef struct node
 {
     int value;
-    struct knot *next;
-} Knot;
+    struct node *next;
+} NODE;
 
 int size = 0;
-Knot *start = NULL;
+NODE *start = NULL;
 
-void append(int value, int index)
+void insert(int value, int index)
 {
     if (index >= 0 && index <= size)
     {
-        Knot *new = malloc(sizeof(Knot));
+        NODE *new = malloc(sizeof(NODE));
         new->value = value;
         new->next = NULL;
 
@@ -31,7 +31,7 @@ void append(int value, int index)
 
         else
         {
-            Knot *hook = start;
+            NODE *hook = start;
             for (int i = 0; i < index - 1; i++)
             {
                 hook = hook->next;
@@ -43,7 +43,7 @@ void append(int value, int index)
     }
 }
 
-float questao2(Knot *hook)
+float exponential(NODE *hook)
 {
     float result = 0;
     while (hook != NULL)
@@ -59,7 +59,7 @@ float questao2(Knot *hook)
 
 void printList()
 {
-    Knot *hook = start;
+    NODE *hook = start;
     while (hook != NULL)
     {
         printf("%d ", hook->value);
@@ -70,16 +70,12 @@ void printList()
 
 int main()
 {
-    void append(int value, int index);
-    void printList();
-    float questao2(Knot * hook);
-
-    append(2, 0);
-    append(2, 0);
+    insert(2, 0);
+    insert(2, 0);
 
     printList();
 
-    float x = questao2(start);
+    float x = exponential(start);
 
     printf("%.2f", x);
 

@@ -24,7 +24,6 @@ struct list *searchValue(struct list *pList, int value)
 
 int main(void)
 {
-    struct list *searchValue(struct list * pList, int value);
     struct list m1, m2, m3;
     struct list *result, *hook = &m1;
     int value;

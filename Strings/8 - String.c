@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    void alphabetical(char var);
     char name[20];
     int i = 0;
     printf("Write a random phrase: ");

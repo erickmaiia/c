@@ -15,7 +15,6 @@ int sumVector(int vector[], const int n)
 
 int main(void)
 {
-    int sumVector(int vector[], const int n);
     int vector[10] = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
     printf("The sum of the vectors is: %i", sumVector(vector, 10));

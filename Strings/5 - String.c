@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    _Bool equalStrings(char s1[], char s2[]);
     if (equalStrings("home", "home"))
     {
         printf("Equal strings");

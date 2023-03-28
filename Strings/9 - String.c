@@ -44,7 +44,6 @@ int searchString(const struct dictionary language[], const char search[], const 
 
 int main(void)
 {
-    int searchString(const struct dictionary language[], const char search[], const int lenWords);
     char word[20] = {'\0'};
     int resultSearch;
     const struct dictionary dict[3] = {

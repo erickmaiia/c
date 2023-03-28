@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct knot
+typedef struct node
 {
     int value;
-    struct knot *next;
-} Knot;
+    struct node *next;
+} NODE;
 
 int size = 0;
-Knot *start = NULL;
+NODE *start = NULL;
 
-void finalAppendRecursive(int value, Knot *current)
+void appendRecursive(int value, NODE *current)
 {
     if (start == NULL)
     {
-        Knot *new = malloc(sizeof(Knot));
+        NODE *new = malloc(sizeof(NODE));
         new->value = value;
         new->next = NULL;
         start = new;
@@ -22,7 +22,7 @@ void finalAppendRecursive(int value, Knot *current)
     }
     else if (current->next == NULL)
     {
-        Knot *new = malloc(sizeof(Knot));
+        NODE *new = malloc(sizeof(NODE));
         new->value = value;
         new->next = NULL;
         current->next = new;
@@ -30,19 +30,18 @@ void finalAppendRecursive(int value, Knot *current)
     }
     else
     {
-        finalAppendRecursive(value, current->next);
+        appendRecursive(value, current->next);
     }
 }
 
-void finalAppend(int value)
+void append(int value)
 {
-    void finalAppendRecursive(int value, Knot *current);
-    finalAppendRecursive(value, start);
+    appendRecursive(value, start);
 }
 
 void printList()
 {
-    Knot *aux = start;
+    NODE *aux = start;
     while (aux != NULL)
     {
         printf("%d ", aux->value);
@@ -53,16 +52,13 @@ void printList()
 
 int main(void)
 {
-    void finalAppend(int value);
-    void printList();
-
-    finalAppend(1);
-    finalAppend(2);
+    append(1);
+    append(2);
 
     printList();
 
-    finalAppend(3);
-    finalAppend(4);
+    append(3);
+    append(4);
 
     printList();
 

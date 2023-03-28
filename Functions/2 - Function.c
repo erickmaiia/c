@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    float areaRectangle(float x, float y);
     float area = areaRectangle(10.0, 20.0);
 
     printf("Area of rectangle is %.1f", area);

@@ -2,7 +2,6 @@
 
 int main(void)
 {
-    void copyContent(FILE * file1, FILE * file2);
     FILE *file1 = fopen("Test1.txt", "r");
 
     FILE *file2 = fopen("Test2.txt", "w");

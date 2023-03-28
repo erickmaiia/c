@@ -2,8 +2,6 @@
 
 int main(void)
 {
-    void printMessage(void);
-
     printMessage();
 
     return 0;

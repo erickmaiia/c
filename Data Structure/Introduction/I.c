@@ -16,7 +16,7 @@ int main(void)
     struct CreditCard card1;
 
     card1.number = 1234567891234567;
-    strcpy(card1.name, "Elma Maria");
+    strcpy(card1.name, "John Carter");
     card1.expiry_month = 6;
     card1.expiry_year = 30;
     card1.cvv = 123;
@@ -27,7 +27,7 @@ int main(void)
     printf("0%i/", card1.expiry_month);
     printf("%i\n", card1.expiry_year);
     printf("%i\n", card1.cvv);
-    printf("R$: %.2f", card1.limit);
+    printf("U$: %.2f", card1.limit);
 
     return 0;
 }

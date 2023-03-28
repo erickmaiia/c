@@ -2,8 +2,6 @@
 
 int main(void)
 {
-    void testVariable(int x);
-    void testPointer(int *pX);
     int test = 1;
     int *pTest = &test;
 
