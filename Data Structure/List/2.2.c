@@ -1,29 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node
+typedef struct queue
 {
     int value;
-    struct node *next;
-} NODE;
+    struct queue *next;
+} QUEUE;
 
-NODE *start = NULL;
-NODE *end = NULL;
+QUEUE *start = NULL;
+QUEUE *end = NULL;
 int size = 0;
 
 void append(int value)
 {
-    NODE *new = malloc(sizeof(NODE));
+
+    QUEUE *new = malloc(sizeof(QUEUE));
     new->value = value;
     new->next = NULL;
 
     if (start == NULL)
-    {
+    { // fila esta vazia
         start = new;
         end = new;
     }
     else
-    {
+    { // end
         end->next = new;
         end = new;
     }
@@ -33,13 +34,16 @@ void append(int value)
 void printList()
 {
 
-    NODE *hook = start;
-
+    QUEUE *hook = start;
+    printf("\n");
     for (int i = 0; i < size; i++)
     {
         printf("Value: %d\n", hook->value);
         hook = hook->next;
     }
+    printf("\n");
+    printf("Size: %d\n", size);
+    printf("----------------------\n");
 }
 
 int delete()
@@ -48,7 +52,7 @@ int delete()
     if (size > 0)
     { // start
 
-        NODE *garbage = start;
+        QUEUE *garbage = start;
         int value = start->value;
         start = start->next;
         free(garbage);
@@ -73,7 +77,6 @@ int main()
     append(25);
     append(30);
     printList();
-    printf("-------------------\n");
     delete ();
     delete ();
     delete ();

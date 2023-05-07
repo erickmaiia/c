@@ -1,54 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node
+typedef struct stack
 {
     int value;
-    struct node *next;
-} NODE;
+    struct stack *next;
+} STACK;
 
-NODE *start = NULL;
-NODE *end = NULL;
+STACK *start = NULL; // topo
 int size = 0;
 
 void append(int value)
 {
-    NODE *new = malloc(sizeof(NODE));
+
+    STACK *new = malloc(sizeof(STACK));
     new->value = value;
     new->next = NULL;
 
     if (start == NULL)
     {
         start = new;
-        end = new;
     }
     else
     {
-        end->next = new;
-        end = new;
+        new->next = start;
+        start = new;
     }
     size++;
-}
-
-void printList()
-{
-
-    NODE *hook = start;
-
-    for (int i = 0; i < size; i++)
-    {
-        printf("Value: %d\n", hook->value);
-        hook = hook->next;
-    }
 }
 
 int delete()
 {
 
     if (size > 0)
-    { // start
+    {
 
-        NODE *garbage = start;
+        STACK *garbage = start;
         int value = start->value;
         start = start->next;
         free(garbage);
@@ -57,11 +44,26 @@ int delete()
     }
     else
     {
-        printf("Empty queue! \n :(");
+        printf("Empty stack! \n :(");
         return -1;
     }
 
     return 0;
+}
+
+void printList()
+{
+
+    STACK *hook = start;
+    printf("\n");
+    for (int i = 0; i < size; i++)
+    {
+        printf("Value: %d\n", hook->value);
+        hook = hook->next;
+    }
+    printf("\n");
+    printf("Size: %d\n", size);
+    printf("----------------------\n");
 }
 
 int main()
@@ -73,7 +75,6 @@ int main()
     append(25);
     append(30);
     printList();
-    printf("-------------------\n");
     delete ();
     delete ();
     delete ();

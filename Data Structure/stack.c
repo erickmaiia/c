@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct no
+typedef struct node
 {
     int value;
-    struct no *next;
-} NO;
+    struct node *next;
+} NODE;
 
-NO *start = NULL; // topo
+NODE *start = NULL; // topo
 int size = 0;
 
 void append(int value)
 {
 
-    NO *new = malloc(sizeof(NO));
+    NODE *new = malloc(sizeof(NODE));
     new->value = value;
     new->next = NULL;
 
@@ -32,7 +32,7 @@ void append(int value)
 void printList()
 {
 
-    NO *hook = start;
+    NODE *hook = start;
 
     for (int i = 0; i < size; i++)
     {
@@ -47,7 +47,7 @@ int delete()
     if (size > 0)
     {
 
-        NO *garbage = start;
+        NODE *garbage = start;
         int value = start->value;
         start = start->next;
         free(garbage);
