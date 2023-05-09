@@ -87,6 +87,6 @@ int main()
     add(1);
     add(2);
     add(3);
-    printf("value removido: %d\n", remover());
+    printf("Removed value: %d\n", remover());
     return 0;
 }
