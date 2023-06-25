@@ -1,7 +1,9 @@
+// Documentacao do codigo: https://level-chevre-849.notion.site/Documenta-o-290b148b42c84fda81250703b42eacdf
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// Documentacao do codigo: https://level-chevre-849.notion.site/Documenta-o-290b148b42c84fda81250703b42eacdf
+
 #define MAX_ITEMS 200
 #define FILENAME "items.txt"
 
@@ -31,6 +33,7 @@ void createItem()
     printf("Digite o codigo do item: ");
     scanf("%s", newItem.cod); // Solicita ao usuário para digitar o código do item e armazena
 
+    fflush(stdin);
     if (strcmp(newItem.cod, "s") == 0) // Verifica se o código digitado é igual a "s"
     {
         return; // Retorna, encerrando a função
@@ -38,6 +41,8 @@ void createItem()
 
     printf("Digite o nome do item: ");
     scanf("%s", newItem.name);
+
+    fflush(stdin);
 
     if (strcmp(newItem.name, "s") == 0)
     {
@@ -47,6 +52,8 @@ void createItem()
     printf("Digite a categoria do item: ");
     scanf("%s", newItem.category);
 
+    fflush(stdin);
+
     if (strcmp(newItem.category, "s") == 0)
     {
         return;
@@ -54,6 +61,8 @@ void createItem()
 
     printf("Digite a quantidade de item(s): ");
     scanf("%s", newItem.quantity);
+
+    fflush(stdin);
 
     if (strcmp(newItem.quantity, "s") == 0)
     {
@@ -75,6 +84,19 @@ void createItem()
         Items[numItems] = newItem; // Adiciona o novo item na lista, na posição numItems
         numItems++;                // Incrementa o contador de itens
         printf("Item criado com sucesso.\n");
+
+        FILE *file = fopen(FILENAME, "w"); // Abre o arquivo no modo de escrita ("w")
+        if (file == NULL)                  // Verifica se ocorreu um erro ao abrir o arquivo
+        {
+            printf("Erro ao abrir o arquivo.\n");
+            return;
+        }
+
+        for (int i = 0; i < numItems; i++) // Itera sobre os itens na lista
+        {
+            fprintf(file, "Codigo: %s Nome: %s Categoria: %s Quantidade: %s\n", Items[i].cod, Items[i].name, Items[i].category, Items[i].quantity); // Escreve as informações do item no arquivo
+        }
+        fclose(file);
         createItem(); // Chama recursivamente a função para permitir a criação de mais itens
     }
     else // Caso o item já exista na lista
@@ -85,22 +107,21 @@ void createItem()
         sprintf(newItem.quantity, "%d", num3);      // Converte o resultado de volta para uma string
         Items[itemIndex] = newItem;                 // Atualiza o item existente na lista com as informações
         printf("Item atualizado com sucesso.\n");
+
+        FILE *file = fopen(FILENAME, "w"); // Abre o arquivo no modo de escrita ("w")
+        if (file == NULL)                  // Verifica se ocorreu um erro ao abrir o arquivo
+        {
+            printf("Erro ao abrir o arquivo.\n");
+            return;
+        }
+
+        for (int i = 0; i < numItems; i++) // Itera sobre os itens na lista
+        {
+            fprintf(file, "Codigo: %s Nome: %s Categoria: %s Quantidade: %s\n", Items[i].cod, Items[i].name, Items[i].category, Items[i].quantity); // Escreve as informações do item no arquivo
+        }
+        fclose(file);
         createItem();
     }
-
-    FILE *file = fopen(FILENAME, "w"); // Abre o arquivo no modo de escrita ("w")
-    if (file == NULL)                  // Verifica se ocorreu um erro ao abrir o arquivo
-    {
-        printf("Erro ao abrir o arquivo.\n");
-        return;
-    }
-
-    for (int i = 0; i < numItems; i++) // Itera sobre os itens na lista
-    {
-        fprintf(file, "Codigo: %s Nome: %s Categoria: %s Quantidade: %s\n", Items[i].cod, Items[i].name, Items[i].category, Items[i].quantity); // Escreve as informações do item no arquivo
-    }
-
-    fclose(file);
 }
 
 void readItems()
@@ -137,6 +158,8 @@ void updateItem()
     printf("Digite o codigo do item que deseja atualizar(s p/ sair): ");
     scanf("%s", searchCod);
 
+    fflush(stdin);
+
     if (strcmp(searchCod, "s") == 0)
     {
         return;
@@ -160,13 +183,14 @@ void updateItem()
     {
         printf("Digite o nome do novo item: ");
         scanf("%s", Items[itemIndex].name); // Solicita ao usuário o novo nome do item e armazena
+        fflush(stdin);
 
         printf("Digite a categoria do novo item: ");
         scanf("%s", Items[itemIndex].category);
-
+        fflush(stdin);
         printf("Digite a quantidade de novo(s) item(s): ");
         scanf("%s", Items[itemIndex].quantity);
-
+        fflush(stdin);
         FILE *file = fopen(FILENAME, "w"); // Abre o arquivo no modo de escrita ("w")
         if (file == NULL)                  // Verifica se ocorreu um erro ao abrir o arquivo
         {
@@ -197,6 +221,7 @@ void deleteItem()
     char searchCod[50]; // Declara um array de caracteres para armazenar o código de busca
     printf("Digite o codigo do item que deseja excluir(s p/ sair): ");
     scanf("%s", searchCod); // Solicita ao usuário o código do item a ser excluído e armazena em searchCod
+    fflush(stdin);
 
     if (strcmp(searchCod, "s") == 0)
     {
@@ -254,6 +279,7 @@ void queryItem()
     char searchCod[50];
     printf("Digite o codigo do item que deseja consultar(s p/ sair): ");
     scanf("%s", searchCod);
+    fflush(stdin);
 
     if (strcmp(searchCod, "s") == 0)
     {
